@@ -1,0 +1,20 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+    <h1>Biometric List</h1>
+    {% if perms.patients.can_view_records %}
+    {% if biometric_list %}
+    <ul>
+
+      {% for biometric in biometric_list %}
+      <li>
+        <a href="{{ biometric.get_absolute_url }}">{{ biometric.user }} ({{biometric.date_biometric}})</a>
+      </li>
+      {% endfor %}
+
+    </ul>
+    {% else %}
+      <p>There are no biometrics.</p>
+    {% endif %}
+    {% endif %}
+{% endblock %}

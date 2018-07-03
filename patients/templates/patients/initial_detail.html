@@ -1,0 +1,110 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+  <h1 style="text-decoration: underline">Initial Patient Information</h1>
+  <table>
+    <tr>
+      <th>Name:</th>
+      <th class="text-danger">&nbsp;{{ initial.first_name }} {{initial.middle_name}} {{ initial.last_name }}</th>
+    </tr>
+    <tr>
+      <th>Age:</th>
+      <th class="text-success">&nbsp;{{ initial.my_age }}</th>
+    </tr>
+    <tr>
+      <th>Date of Birth:</th>
+      <th class="text-success">&nbsp;{{ initial.date_of_birth|date:"m-d-Y" }}</th>
+    </tr>
+    <tr>
+      <th>Gender:</th>
+      {% if initial.gender == 'm' %}
+      <th class="text-success">&nbsp;Male</th>
+      {% elif initial.gender == 'f' %}
+      <th class="text-success">&nbsp;Female</th>
+      {% else %}
+      <th class="text-success">&nbsp;Other</th>
+      {% endif %}
+    </tr>
+    <tr>
+      <th>Height:</th>
+      <th class="text-success">&nbsp;{{ initial.height }}&#34;</th>
+    </tr>
+    <tr>
+      <th>Weight:</th>
+      <th class="text-success">&nbsp;{{ initial.weight }}&nbsp;lbs</th>
+    </tr>
+    <tr>
+      <th>BMI:</th>
+      <th class="text-success">&nbsp;{{ initial.bmi }}</th>
+    </tr>
+    <tr>
+      <th>Date of Visit:</th>
+      <th class="text-success">&nbsp;{{ initial.date_initial|date:"m-d-Y" }}</th>
+    </tr>
+    <tr>
+      <th>BP Prone:</th>
+      <th class="text-success">&nbsp;{{ initial.bp_systolic_lie }}/{{ initial.bp_diastolic_lie }}</th>
+    </tr>
+    <tr>
+      <th>BP Sit:</th>
+      <th class="text-success">&nbsp;{{ initial.bp_systolic_sit }}/{{ initial.bp_diastolic_sit }}</th>
+    </tr>
+    <tr>
+      <th>BP Stand:</th>
+      <th class="text-success">&nbsp;{{ initial.bp_systolic_stand }}/{{ initial.bp_diastolic_stand }}</th>
+    </tr>
+    <tr>
+      <th>Pulse Prone:</th>
+      <th class="text-success">&nbsp;{{ initial.hr_lie }}</th>
+    </tr>
+    <tr>
+      <th>Pulse Sit:</th>
+      <th class="text-success">&nbsp;{{ initial.hr_sit }}</th>
+    </tr>
+    <tr>
+      <th>Pulse Stand:</th>
+      <th class="text-success">&nbsp;{{ initial.hr_stand }}</th>
+    </tr>
+    <tr>
+      <th>O2 Prone:</th>
+      <th class="text-success">&nbsp;{{ initial.o2_lie }}</th>
+    </tr>
+    <tr>
+      <th>O2 Sit:</th>
+      <th class="text-success">&nbsp;{{ initial.o2_sit }}</th>
+    </tr>
+    <tr>
+      <th>O2 Stand:</th>
+      <th class="text-success">&nbsp;{{ initial.o2_stand }}</th>
+    </tr>
+    <tr>
+      <th>Referrer:</th>
+      <th class="text-success">&nbsp;{% for ins in initial.referrer.all %} {{ ins }}{% if not forloop.last %}, {% endif %}{% endfor %}</th>
+    </tr>
+    <tr>
+      <th>Notes:</th>
+      <th class="text-success">&nbsp;{{ initial.notes }}</th>
+    </tr>
+    <tr>
+      <th>Accepted:</th>
+      {% if initial.accepted %}
+      <th class="glyphicon glyphicon-ok text-success"></th>
+      {% else %}
+      <th class="glyphicon glyphicon-remove text-danger"></th>
+      {% endif %}
+    </tr>
+
+  </table>
+<p></p>
+
+  <table>
+    <tr>
+      <th></th>
+    </tr>
+    <tr>
+      <th><a href="{% url 'patients:initial_update' pk=initial.pk %}" class="top-menu"><span class="glyphicon glyphicon glyphicon-pencil">Edit</span></a></th>
+      <th>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
+      <th><a href="{% url 'patients:initial_delete' pk=initial.pk %}" class="top-menu" style="color:red"><span class="glyphicon glyphicon glyphicon-trash">Trash</span></a></th>
+    </tr>
+  </table>
+{% endblock %}

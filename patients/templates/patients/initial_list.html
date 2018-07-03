@@ -1,0 +1,20 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+    <h1>Initials List</h1>
+    {% if perms.patients.can_view_records %}
+    {% if initial_list %}
+    <ul>
+
+      {% for initial in initial_list %}
+      <li>
+        <a href="{{ initial.get_absolute_url }}">{{ initial.first_name }} {{ initial.last_name }} ({{initial.date_of_birth}})</a>
+      </li>
+      {% endfor %}
+
+    </ul>
+    {% else %}
+      <p>There are no patients in the clinic.</p>
+    {% endif %}
+    {% endif %}
+{% endblock %}

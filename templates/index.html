@@ -1,0 +1,22 @@
+{% extends "base_generic.html" %}
+
+{% block title %}
+<title>Transform Alliance Home</title>
+{% endblock %}
+{% block content %}
+<h1>Transform Alliance Home</h1>
+
+  <p>Welcome to <em>Transform Alliance</em>, demo Desktop.</p>
+
+<h2>Dynamic content</h2>
+
+  <p>The library has the following record counts:</p>
+  <ul>
+    {# <li><strong>Patients:</strong> {{ num_patients }}</li> #}
+
+  </ul>
+
+  <iframe src="https://calendar.google.com/calendar/embed?height=600&amp;wkst=1&amp;bgcolor=%23FFFFFF&amp;ctz=Asia%2FCalcutta" style="border-width:0" width="800" height="600" frameborder="0" scrolling="no"></iframe>
+
+  {# <p>You have visited this page {{ num_visits }}{% if num_visits == 1 %} time{% else %} times{% endif %}.</p> #}
+{% endblock %}

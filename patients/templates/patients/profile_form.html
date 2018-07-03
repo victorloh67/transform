@@ -1,0 +1,18 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+<div id="" style="overflow:scroll; height:600px;">
+<form action="" method="post" class="form-group" style="color:red">
+    {% csrf_token %}
+    <h3>Patient Form</h3>
+
+
+    <table>
+    {{ form.as_table }}
+    </table>
+    <h1><span class="glyphicon glyphicon-piggy-bank"></span></h1>
+    <input type="submit" class="btn btn-primary" value="Save" style="color: blue" />
+
+</form>
+</div>
+{% endblock %}

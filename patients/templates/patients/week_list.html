@@ -1,0 +1,22 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+<div id="" style="overflow:scroll; height:600px;">
+    <h1>Week List</h1>
+    {% if perms.patients.can_view_records %}
+    {% if week_list %}
+    <ul>
+
+      {% for week in week_list %}
+      <li>
+        <a href="{{ week.get_absolute_url }}">{{ week.user }} Number: {{ week.number }} ({{week.date_week}})</a>
+      </li>
+      {% endfor %}
+
+    </ul>
+    {% else %}
+      <p>There are no patients in the clinic.</p>
+    {% endif %}
+    {% endif %}
+</div>
+{% endblock %}

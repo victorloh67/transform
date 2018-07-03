@@ -1,0 +1,97 @@
+{% extends "base_generic.html" %}
+{% load staticfiles %}
+{% block content %}
+<div id="" style="overflow:scroll; height:600px;">
+  <h3 style="text-decoration: underline">Biometric Information</h3>
+  <table>
+    <tr>
+      <th>Name:</th>
+      <th class="text-danger">&nbsp;{{ biometric.user }}</th>
+    </tr>
+    <tr>
+      <th>Date:</th>
+      <th class="text-success">&nbsp;{{ biometric.date_biometric }}</th>
+    </tr>
+    <tr>
+      <th>Day:</th>
+      <th class="text-success">&nbsp;{{ biometric.day }}</th>
+    </tr>
+    <tr>
+      <th>Weight:</th>
+      <th class="text-success">&nbsp;{{ biometric.weight }}</th>
+    </tr>
+    <tr>
+      <th>Height:</th>
+      <th class="text-success">&nbsp;{{ biometric.height }}&#34;</th>
+    </tr>
+    <tr>
+      <th>BMI:</th>
+      <th class="text-success">&nbsp;{{ biometric.bmi }}</th>
+    </tr>
+    <tr>
+      <th>Neck Girth:</th>
+      <th class="text-success">&nbsp;{{ biometric.neck_girth }}&#34;</th>
+    </tr>
+    <tr>
+      <th>Inches SN</th>
+      <th class="text-success">&nbsp;{{ biometric.inches_sn }}&#34;</th>
+    </tr>
+    <tr>
+      <th>Umbilicus Girth:</th>
+      <th class="text-success">&nbsp;{{ biometric.umbilicus_girth }}&#34;</th>
+    </tr>
+    <tr>
+      <th>Hip Girth:</th>
+      <th class="text-success">&nbsp;{{ biometric.hip_girth }}&#34;</th>
+    </tr>
+    <tr>
+      <th>Inches Umbilicus:</th>
+      <th class="text-success">&nbsp;{{ biometric.inches_umbilicus }}&#34;</th>
+    </tr>
+    <tr>
+      <th>Body Composition:</th>
+      <th class="text-success">&nbsp;{{ biometric.body_composition }}</th>
+    </tr>
+    <tr>
+      <th>Body Fat:</th>
+      <th class="text-success">&nbsp;{{ biometric.body_fat }}</th>
+    </tr>
+    <tr>
+      <th>VAT:</th>
+      <th class="text-success">&nbsp;{{ biometric.lean_mass }}</th>
+    </tr>
+    <tr>
+      <th>BP:</th>
+      <th class="text-success">&nbsp;{{ biometric.bp_systolic }} / {{ biometric.bp_diastolic}}</th>
+    </tr>
+    <tr>
+      <th>Heart Rate:</th>
+      <th class="text-success">&nbsp;{{ biometric.pulse }}</th>
+    </tr>
+    <tr>
+      <th>O2:</th>
+      <th class="text-success">{{biometric.o2}}</th>
+    </tr>
+    <tr>
+      <th>Status:</th>
+      {% if status == 'u' %}
+      <th class="text-success">Underweight</th>
+      {% elif status == 'n' %}
+      <th class="text-success">Normal weight</th>
+      {% elif status == 'o' %}
+      <th class="text-success">Overweight</th>
+      {% elif status == 'x' %}
+      <th class="text-success">Obesity I</th>
+      {% elif status == 'y' %}
+      <th class="text-success">Obesity II</th>
+      {% else %}
+      <th class="text-success">Obesity III</th>
+      {% endif %}
+    </tr>
+  </table>
+
+
+
+
+</div>
+{% endblock %}

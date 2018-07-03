@@ -1,0 +1,144 @@
+{% extends "base_generic.html" %}
+{% load staticfiles %}
+{% block content %}
+<div id="" style="overflow:scroll; height:600px;">
+  <h3 style="text-decoration: underline">Patient Information</h3>
+  <table>
+    <tr>
+      <th>Name:</th>
+      <th class="text-danger">&nbsp;{{ profile.first_name }} {{ profile.middle_name}} {{ profile.last_name }}</th>
+    </tr>
+    <tr>
+      <th>Age:</th>
+      <th class="text-success">&nbsp;{{ profile.my_age }}</th>
+    </tr>
+    <tr>
+      <th>Date of Birth:</th>
+      <th class="text-success">&nbsp;{{ profile.date_of_birth|date:"m-d-Y" }}</th>
+    </tr>
+    <tr>
+      <th>Gender:</th>
+      {% if profile.gender == 'm' %}
+      <th class="text-success">&nbsp;Male</th>
+      {% elif profile.gender == 'f' %}
+      <th class="text-success">&nbsp;Female</th>
+      {% else %}
+      <th class="text-success">&nbsp;Other</th>
+      {% endif %}
+    </tr>
+    <tr>
+      <th>Height:</th>
+      <th class="text-success">&nbsp;{{ profile.height }}&#34;</th>
+    </tr>
+    <tr>
+      <th>Ethnicity:</th>
+      <th class="text-success">&nbsp;{{ profile.ethnicity }}</th>
+    </tr>
+    <tr>
+      <th>Phone:</th>
+      <th class="text-success">&nbsp;{{ profile.phone }}</th>
+    </tr>
+    <tr>
+      <th>Insurance:</th>
+      <th class="text-success">&nbsp;{{ profile.insurance }}</th>
+    </tr>
+    <tr>
+      <th>Branch:</th>
+      <th class="text-success">&nbsp;{{ profile.branch }}</th>
+    </tr>
+    <tr>
+      <th>Program:</th>
+      <th class="text-success">&nbsp;{{ profile.program }}</th>
+    </tr>
+    <tr>
+      <th>Notes:</th>
+      <th class="text-success">&nbsp;{{ profile.notes }}</th>
+    </tr>
+    <tr>
+      <th>Next Appointment:</th>
+      <th class="text-success">&nbsp;{{ profile.appointment }}</th>
+    </tr>
+    <tr>
+      <th>Address:</th>
+      <th class="text-success">&nbsp;{{ profile.address1 }}</th>
+      {% if profile.address2 %}
+        <tr>
+          <th></th>
+          <th class="text-success">&nbsp;{{ profile.address2 }}</th>
+        </tr>
+      {% endif %}
+    </tr>
+    <tr>
+      <th>State:</th>
+      <th class="text-success">&nbsp;{{ profile.state }}</th>
+    </tr>
+    <tr>
+      <th>Country:</th>
+      <th class="text-success">&nbsp;{{ profile.country }}</th>
+    </tr>
+    {% if profile.pic %}
+    <tr>
+      <th>Photo:</th>
+      <th class="text-success"><img src="/media/{{ profile.profile_pic }}"></th>
+    </tr>
+    {% endif %}
+    {% if profile.initial %}
+    <tr>
+      <th>Initial:</th>
+      <th class="text-success"><a href="{{ initial.get_absolute_url }}">{{profile.initial}}</a></th>
+    </tr>
+    {% endif %}
+  </table>
+
+
+  <div style="margin-left:20px;margin-top:20px">
+    <h4>Biometrics</h4>
+
+    {% for copy in profile.biometrics.all %}
+    <hr>
+    <table>
+      <tr>
+        <th>Date:</th>
+        <th class="text-success">&nbsp;{{ copy.date_biometric }}</th>
+      </tr>
+      <tr>
+        <th>Weight:</th>
+        <th class="text-warning">&nbsp;{{ copy.weight }}</th>
+      </tr>
+      <tr>
+        <th>BMI:</th>
+        <th class="text-warning">&nbsp;{{ copy.bmi }}</th>
+      </tr>
+      <tr>
+        <th>Neck Girth:</th>
+        <th class="text-warning">&nbsp;{{ copy.neck_girth }}</th>
+      </tr>
+      <tr>
+        <th>VAT:</th>
+        <th class="text-danger">&nbsp;{{ copy.vat }}</th>
+      </tr>
+      <tr>
+        <th>BP:</th>
+        <th class="text-danger">&nbsp;{{ copy.bp_systolic }} / {{ copy.bp_diastolic }}</th>
+      </tr>
+      <tr>
+        <th>Day:</th>
+        <th class="text-success">&nbsp;{{ copy.day }}</th>
+      </tr>
+
+
+    </table>
+    {% endfor %}
+  </div>
+  <table>
+    <tr>
+      <th></th>
+    </tr>
+    <tr>
+      <th><a href="{% url 'patients:profile_update' pk=profile.pk %}" class="top-menu"><span class="glyphicon glyphicon glyphicon-pencil">Edit</span></a></th>
+      <th>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
+      <th><a href="{% url 'patients:profile_delete' pk=profile.pk %}" class="top-menu" style="color:red"><span class="glyphicon glyphicon glyphicon-trash">Trash</span></a></th>
+    </tr>
+  </table>
+</div>
+{% endblock %}

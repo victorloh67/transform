@@ -1,0 +1,74 @@
+{% extends "base_generic.html" %}
+{% load staticfiles %}
+{% block content %}
+<div id="" style="overflow:scroll; height:600px;">
+  <h3 style="text-decoration: underline">Checklist</h3>
+  <table>
+    <tr>
+      <th>Name:</th>
+      <th class="text-danger">&nbsp;{{ checklist.name }}</th>
+    </tr>
+    <tr>
+      <th>Weigh-in done?:</th>
+      {% if checklist.weight %}
+      <th class="glyphicon glyphicon-ok text-success"></th>
+      {% endif %}
+    </tr>
+    <tr>
+      <th>Dexa:</th>
+      {% if checklist.dexa %}
+      <th class="glyphicon glyphicon-ok text-success"></th>
+      {% endif %}
+    </tr>
+    <tr>
+      <th>Ask about pre-existing conditions:</th>
+      {% if checklist.conditions %}
+      <th class="glyphicon glyphicon-ok text-success"></th>
+      {% endif %}
+    </tr>
+    <tr>
+      <th>Ask about any allergies:</th>
+      {% if checklist.allergies %}
+      <th class="glyphicon glyphicon-ok text-success"></th>
+      {% endif %}
+    </tr>
+    <tr>
+      <th>Ask about Medications:</th>
+      {% if checklist.medications %}
+      <th class="glyphicon glyphicon-ok text-success"></th>
+      {% endif %}
+    </tr>
+    <tr>
+      <th>Ask about Supplements:</th>
+      {% if checklist.supplements %}
+      <th class="glyphicon glyphicon-ok text-success"></th>
+      {% endif %}
+    </tr>
+    <tr>
+      <th>Discuss Importance of Logging:</th>
+      {% if checklist.logging %}
+      <th class="glyphicon glyphicon-ok text-success"></th>
+      {% endif %}
+    </tr>
+    <tr>
+      <th>Date modified:</th>
+      <th class="text-danger">&nbsp;{{ checklist.date_checklist }}</th>
+    </tr>
+
+
+  </table>
+
+  <table>
+    <tr>
+      <th></th>
+    </tr>
+    <tr>
+      <th><a href="{% url 'patients:checklist_update' pk=checklist.pk %}" class="top-menu"><span class="glyphicon glyphicon glyphicon-pencil">Edit</span></a></th>
+      <th>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
+      
+    </tr>
+  </table>
+
+
+</div>
+{% endblock %}

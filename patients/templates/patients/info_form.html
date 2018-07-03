@@ -1,0 +1,23 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+
+<div id="" style="overflow:scroll; height:600px;">
+<form action="" method="post" class="form-group" style="color:red">
+    {% csrf_token %}
+
+
+
+    <table>
+    {# {{ form.as_table }} #}
+    {{ form }}
+    </table>
+    <input type="submit" class="btn btn-primary" value="Submit" style="color: blue" />
+
+</form>
+</div>
+
+
+
+
+{% endblock %}

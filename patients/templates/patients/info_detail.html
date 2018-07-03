@@ -1,0 +1,28 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+  <h1 style="text-decoration: underline">Patient Information</h1>
+  <h1>Name: {{ info.first_name }} {{ info.last_name }}</h1> <i>({{ info.preferred_name }})</i>
+
+  <p><strong>Date of Birth:</strong> <a href="">{{ info.date_of_birth }}</a></p> <!-- author detail link not yet defined -->
+  <p><strong>Gender:</strong> {{ info.gender }}</p>
+  <p><strong>Ethnicity:</strong> {{ info.ethnicity }}</p>
+  <p><strong>Phone:</strong> {{ info.phone }}</p>
+  <p><strong>Insurance:</strong> {% for ins in info.insurance.all %} {{ ins }}{% if not forloop.last %}, {% endif %}{% endfor %}</p>
+
+  <div style="margin-left:20px;margin-top:20px">
+    <h4>Biometrics</h4>
+
+    {% for copy in info.biometrics.all %}
+    <hr>
+
+
+    <p class="text-success">Date: {{ copy.date_biometric }}</p>
+    <p><strong>Weight:</strong> {{copy.weight}}</p>
+    <p><strong>BMI:</strong> {{copy.bmi}}</p>
+    <p class="text-danger"><strong>VAT:</strong> {{copy.vat}}</p>
+    <p class="text-warning"><strong>BP:</strong> {{copy.bp_systolic}} / {{copy.bp_diastolic}}</p>
+    <p class="text-muted"><strong></strong> {{copy.day}}</p>
+    {% endfor %}
+  </div>
+{% endblock %}

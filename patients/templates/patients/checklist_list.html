@@ -1,0 +1,20 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+    <h1>Checklist List</h1>
+    {% if perms.patients.can_view_records %}
+    {% if checklist_list %}
+    <ul>
+
+      {% for checklist in checklist_list %}
+      <li>
+        <a href="{{ checklist.get_absolute_url }}">{{ checklist.name }} ({{checklist.date_checklist}})</a>
+      </li>
+      {% endfor %}
+
+    </ul>
+    {% else %}
+      <p>There are no checklists.</p>
+    {% endif %}
+    {% endif %}
+{% endblock %}
